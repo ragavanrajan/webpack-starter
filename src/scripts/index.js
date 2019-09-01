@@ -52,3 +52,14 @@ for (let i=0; i<=5; i++) {
     }
     console.log(i);
 }
+
+let employeeId =123;
+
+console.log(employeeId =="123"); // == true because JS will convert number to string. === returns false
+
+let year= 1967;
+
+console.log(year++);  // 1967
+console.log(year);  // 1968
+
+console.log(+year);
