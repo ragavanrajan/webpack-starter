@@ -63,3 +63,42 @@ console.log(year++);  // 1967
 console.log(year);  // 1968
 
 console.log(+year);
+
+
+if (5 === 5 && 6=== 6 ) {
+    console.log(true);
+}
+else {
+    console.log(false);
+}
+
+
+let userSettings = null;
+let defaultSettings = { name: 'Default'};
+
+console.log(userSettings || defaultSettings);
+
+let audi =null;
+console.log(!audi);
+
+let s1 ='Ragavan';
+let s2= 'mike';
+
+if (s1.toUpperCase() > s2.toUpperCase()) {
+    console.log(true);
+}
+else {
+    console.log(false);
+}
+
+var result = ( 5 > 4) ? 'true' : 'false' ;
+
+
+console.log(result);
+
+let year1 = 1987;
+
+year1 += 10;
+console.log(year1);
+
+
