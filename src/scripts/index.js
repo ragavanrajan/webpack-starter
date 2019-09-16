@@ -1,4 +1,5 @@
 import '../styles/index.scss';
+import {Vehicle} from "./models/vehicle";
 const cardId =42;
 console.log('webpack starterkit');
 
@@ -101,4 +102,177 @@ let year1 = 1987;
 year1 += 10;
 console.log(year1);
 
+function startMouse(mouseId) {
 
+    let message = 'starting....';
+    let startFn = function turnKey() {
+        let message ='Override';
+    };
+    startFn();
+    console.log(message);
+}
+
+startMouse(55);
+
+
+
+if ( 55=== 55) {
+    let message = 'Equal';
+    console.log(message);
+}
+
+
+let app = (function() {
+    let mouseId =123;
+    console.log('in function');
+    return {};
+})();
+
+console.log(app);
+
+let app1 = (function() {
+    let ringId =555;
+    let getId = function () {
+        return ringId;
+    };
+    return {
+        getId: getId
+    };
+
+})();
+
+console.log(app1.getId());
+
+
+let o = {
+    newId: 123,
+    getNewId : function (prefix) {
+        return prefix + this.newId;
+    }
+};
+
+let newCar = {newId : 456};
+console.log(o.getNewId.apply(newCar, ['Id: ']));
+
+
+let n= {
+    newId : 123,
+    getNewId: function () {
+        return this.newId;
+    }
+};
+
+let newCar1 = {newId: 678};
+let newFn= n.getNewId.bind(newCar1);
+
+console.log(newFn());
+
+
+let getId = (prefix, suffix) => {
+    return prefix + 555 + suffix;
+};
+
+console.log(getId('ID:',  '!'));
+
+
+let trackCar = function (carId, city='TGA') {
+
+    console.log(` Tracking ${carId} in City ${city}`);
+};
+trackCar(22);
+trackCar(22, 'HAM');
+
+
+// Constructor
+
+function Car(id) {
+    this.carId = id;
+    this.start =function () {
+        console.log('Start :' + this.carId);
+    };
+}
+
+let vehicle = new Car(47);
+vehicle.start();
+
+// Using prototypes
+function OnePlus(id) {
+    this.oneId = id;
+}
+OnePlus.prototype.start = function () {
+  console.log('Start  :' + this.oneId);
+};
+
+let onePlus = new OnePlus(123);
+onePlus.start();
+
+// parsing JSON
+
+let jsonIn  =` [
+{"bikeId": 123},
+{"bikeId": 456},
+{"bikeId": 789}
+
+]
+`;
+
+let bikeIds = JSON.parse(jsonIn);
+console.log(bikeIds);
+console.log(JSON.stringify(bikeIds));
+
+// Array Iteration Examples
+
+let busIds =[
+    {"busId": 123, "style": "convertible"},
+    {"busId": 456, "style": "hatchback"},
+    {"busId": 124, "style": "convertible"},
+    ];
+
+busIds.forEach ( bus => console.log(bus));
+
+busIds.forEach((bus, index) => console.log(bus, index));
+
+let convertibles = busIds.filter(bus => bus.style === 'convertible');
+
+console.log(convertibles);
+
+let busResult = busIds.every(bus => bus.busId > 0);
+console.log(busResult);
+
+let busResultFind = busIds.find(bus => bus.busId >110);
+console.log(busResultFind);
+
+
+// Class
+
+class Train {
+}
+let train =new Train();
+console.log(train);
+
+// class with constructor, properties and methods
+
+class Flight {
+    constructor(id) {
+        this.id = id;
+    }
+    identify(suffix){
+        return `Flight Id: ${this.id} ${suffix}`;
+    }
+}
+
+let flight = new Flight(787);
+console.log(flight.identify('!!!'));
+
+// inheritance
+
+
+
+class Bicycle extends Vehicle {
+    start(){
+        return `In bicycle start method : ` + super.start();
+    }
+}
+let bicycle = new Bicycle();
+
+console.log(bicycle.start());
