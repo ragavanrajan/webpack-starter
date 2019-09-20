@@ -1,5 +1,8 @@
 import '../styles/index.scss';
 import {Vehicle} from "./models/vehicle";
+
+
+
 const cardId =42;
 console.log('webpack starterkit');
 
@@ -276,3 +279,152 @@ class Bicycle extends Vehicle {
 let bicycle = new Bicycle();
 
 console.log(bicycle.start());
+console.log('window.inner:', window.innerWidth);
+
+// Timer setTimeout and setInterval example
+
+function setTimeOut(f, number) {
+    return undefined;
+}
+
+let timeoutId =  setTimeOut(function () {
+
+    console.log('1 second passed');
+
+}, 1000);
+
+/*
+let intervalId = setInterval(function () {
+    console.log(' firing at 1 second');
+});
+*/
+
+
+// to cancel
+// clearTimeout(intervalId);
+
+console.log(location.href);
+
+
+// DOM
+
+let el = document.getElementById('first');
+el.textContent ='Ragavan Rajan';
+el.setAttribute('Name', 'RR');
+
+el.classList.add('p2');
+el.style.color='green';
+
+console.log(el);
+
+let cl = document.getElementsByClassName('p1');
+console.log(cl);
+
+
+// Error handling
+try {
+    // let drink = newDrink;
+    throw new Error('My Custom Error');
+    // console.log('continuing');
+}
+catch (error) {
+    console.log('Error:', error);
+
+}
+finally {
+    console.log('Finally executed');
+}
+
+
+// Promise
+
+let promise = new Promise(
+    function (resolve,reject) {
+        setTimeOut(resolve,100,'Some value');
+    }
+);
+
+promise.then(
+    value => console.log('Fulfilled:' + value),
+    error => console.log('Rejected' + error)
+
+);
+
+
+/*
+// XHR request
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+
+    if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+    }
+    
+};
+xhttp.open("GET", "http://5d842ca4baffda001476acab.mockapi.io/api/v1/users", true);
+xhttp.send();
+*/
+
+/*
+// using jQuery
+import $ from 'jquery';
+let promise1 = $.get("http://5d842ca4baffda001476acab.mockapi.io/api/v1/users");
+promise1.then(
+    data => console.log('Success:', data),
+    error => console.log('Error:', error)
+);
+*/
+
+/*
+// using jQuery POST
+import $ from 'jquery';
+let user ={
+     name: 'Mike Bisset',
+    avatar: 'Mike.jpg'
+};
+
+let promise2 = $.post("http://5d842ca4baffda001476acab.mockapi.io/api/v1/users", user);
+promise2.then(
+    data => console.log('Success:', data),
+    error => console.log('Error:', error)
+);
+*/
+
+
+// forms
+
+import $ from 'jquery';
+let form = document.getElementById('user-form');
+
+form.addEventListener('submit', event => {
+
+    let userName= form.elements['user'];
+    let avatarFile = form.elements['avatar-file'];
+    let userError = document.getElementById('user-error');
+
+
+    let posting = {
+        user: userName.value,
+        avatarFile: avatarFile.value
+    };
+
+    let promise2 = $.post("http://5d842ca4baffda001476acab.mockapi.io/api/v1/users", posting);
+    promise2.then(
+        data => console.log('Success:', data),
+        error => console.log('Error:', error)
+    );
+
+  if ( userName.value.length < 4) {
+
+    userError.textContent='Invalid Entry';
+    userError.style.color= 'red';
+    userError.style.borderColor ='red';
+    userName.focus();
+
+    console.log(userName.value, avatarFile.value);
+    // Prevent the browser from submitting the form
+  }
+    event.preventDefault();
+});
